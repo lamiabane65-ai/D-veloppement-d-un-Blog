@@ -9,6 +9,7 @@ class Router {
 
 }
 
-
+$db = Database::getInstance();
+echo "Connexion BD ok";
 
 ?>
