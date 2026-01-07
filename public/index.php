@@ -5,7 +5,17 @@ error_reporting(E_ALL);
 
 require_once __DIR__ . '/../core/Autoload.php';
 
-use App\Controllers\TestController;
+use Core\Autoload;
+use Core\Router;
 
-$controller = new TestController();
-$controller->index();
+Autoload::register();
+
+$uri = $_SERVER['REQUEST_URI'];
+$uri = rtrim($uri, '/');
+if($uri === '') $uri = '/';
+
+$router = new Router();
+$router->dispatch($uri);
+
+
+
