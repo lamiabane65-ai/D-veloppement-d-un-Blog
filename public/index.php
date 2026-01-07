@@ -9,13 +9,18 @@ use Core\Autoload;
 use Core\Router;
 
 Autoload::register();
-
+use App\Controllers\HomeController;
+use App\Controllers\ArticleController;
+use App\Controllers\AuthController;
+use App\Controllers\AdminController;
 $uri = $_SERVER['REQUEST_URI'];
 $uri = rtrim($uri, '/');
 if($uri === '') $uri = '/';
 
+
+
+$controller = new HomeController();
+$controller->index();
+
 $router = new Router();
 $router->dispatch($uri);
-
-
-
